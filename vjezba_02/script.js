@@ -1,3 +1,30 @@
+// Navbar
+
+let prevScrollpos = window.pageYOffset;
+
+window.onscroll = function() {
+
+    let currentScrollPos = window.pageYOffset;
+
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-94px";
+    }
+
+    prevScrollpos = currentScrollPos;
+
+}
+
+// Hambi
+
+const hambi = document.querySelector('#hambi');
+
+hambi.onclick = function() {
+    this.classList.toggle('open');
+    document.getElementById("mobileNav").classList.toggle('mobile-open');
+}
+
 var t1 = new TimelineMax({ paused: true });
 
 t1.to(".nav-container", 1, {
@@ -25,13 +52,23 @@ t1.staggerFrom(
 
 t1.reverse();
 
-let menuOpen = document.querySelector(".menu-open");
-let menuClose = document.querySelector(".menu-close");
 
-menuOpen.addEventListener("click", function() {
+hambi.addEventListener("click", function() {
     t1.reversed(!t1.reversed());
 });
 
-menuClose.addEventListener("click", function() {
-    t1.reversed(!t1.reversed());
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+
 });
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
