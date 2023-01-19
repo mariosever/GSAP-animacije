@@ -1,24 +1,188 @@
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-	margin: 0;
-	background: #161616;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    margin: 0;
 }
 
-.menu-open {
-	color: #fff;
+img {
+    width: 100%;
+    height: auto;
 }
 
-.menu-open,
-.menu-close {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 40px;
-	font-size: 20px;
-	cursor: pointer;
+.wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
 }
+
+section {
+    margin: 60px 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+}
+
+#navbar {
+    background: rgba(255,255,255, .5);
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: all .3s;
+    z-index: 999;
+}
+
+#navbar .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 158px;
+    height: 27px;
+}
+
+.main-menu {
+    width: 100%;
+    max-width: 768px;
+}
+
+.main-menu ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+/* Hambi */
+#hambi {
+    width: 60px;
+    height: 45px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+ 
+#hambi span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: rgb(58, 58, 58);
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+#hambi span:nth-child(1) {
+    top: 0px;
+    transform-origin: left center;
+}
+ 
+#hambi span:nth-child(2) {
+    top: 18px;
+    transform-origin: left center;
+}
+ 
+#hambi span:nth-child(3) {
+    top: 36px;
+    transform-origin: left center;
+}
+ 
+#hambi.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: -3px;
+    left: 8px;
+}
+ 
+#hambi.open span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+ 
+#hambi.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 39px;
+    left: 8px;
+}
+
+@media (max-width: 900px) {
+
+    #navbar .container {
+        flex-direction: column;
+    }
+
+    .main-menu ul {
+        flex-direction: column;
+    }
+
+    #hambi {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+
+}
+
+section.sticky {
+    display: grid;
+    grid: auto/650px 1fr;
+    grid-gap: 0 4em;
+    padding: 80px 0;
+}
+
+.sticky-box {
+    grid-column: 1/2;
+    align-self: start;
+    position: sticky;
+    top: 80px;
+}
+
+.scroll-box {
+    grid-column: 2/3;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.feature {
+    margin: 60px 0 200px;
+}
+
+.hidden {
+    opacity: .2;
+    transition: all .5s ease-in;
+}
+
+.show {
+    opacity: 1;
+}
+
 
 .socials {
 	position: absolute;
@@ -34,11 +198,13 @@ body {
 }
 
 .nav-container {
-	position: fixed;
+	position: absolute;
 	left: -100%;
 	width: 100%;
-	height: 100vh;
-	background: #fff;
+    height: 100vh;
+    bottom: 0;
+    top: 0;
+    background: #dbdbdb;
 }
 
 .menu__item {
@@ -65,3 +231,6 @@ body {
 	line-height: 1.15;
 }
 
+body.disabledScroll {
+    overflow: hidden;
+}

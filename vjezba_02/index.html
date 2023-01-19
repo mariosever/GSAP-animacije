@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>GSAP Menu</title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script defer src="script.js"></script>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position sticky - vježba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-	<body>
-		<div class="menu-open">menu</div>
+<div id="navbar">
+    <div class="container">
+
+        <div class="logo">
+            <a href="#"><img src="logo.svg" alt="Overflow"></a>
+        </div>
+
 		<div class="nav-container">
-			<div class="menu-close">close</div>
+			
 			<div class="socials">
 				<span>facebook</span>
 				<span>instagram</span>
@@ -32,5 +41,79 @@
 				</div>
 			</nav>
 		</div>
-	</body>
+
+        <div id="hambi">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+
+    <section>
+        <h1>Position sticky</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem ratione consequatur nostrum sint porro fuga quia perferendis libero aliquam mollitia a commodi sequi facere quasi, repellat vero animi iusto quam?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum magnam nisi beatae earum facilis, eius eos totam. Delectus reiciendis voluptatibus neque repellat veniam nulla, alias illo, illum, distinctio expedita magni.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil corrupti animi aut eaque quasi consectetur, odio fugit laborum voluptatem quam temporibus, saepe nobis, commodi ab ratione esse vero doloremque a?</p>
+    </section>
+
+    <section class="sticky">
+        <!-- ovaj dio je sticky -->
+        <div class="sticky-box">
+            <video loop autoplay muted>
+                <source src="work-together-with-your-team.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="scroll-box">
+
+            <div class="feature hidden">
+                <h2>Feature 1</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quos quo, voluptas nobis labore in ipsam, repellat quasi harum maiores iste saepe sed necessitatibus nostrum sequi porro optio aliquid iure!
+                </p>
+            </div>
+
+            <div class="feature hidden">
+                <h2>Feature 2</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quos quo, voluptas nobis labore in ipsam, repellat quasi harum maiores iste saepe sed necessitatibus nostrum sequi porro optio aliquid iure!
+                </p>
+            </div>
+
+            <div class="feature hidden">
+                <h2>Feature 3</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quos quo, voluptas nobis labore in ipsam, repellat quasi harum maiores iste saepe sed necessitatibus nostrum sequi porro optio aliquid iure!
+                </p>
+            </div>
+
+            <div class="feature hidden">
+                <h2>Feature 4</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quos quo, voluptas nobis labore in ipsam, repellat quasi harum maiores iste saepe sed necessitatibus nostrum sequi porro optio aliquid iure!
+                </p>
+            </div>
+
+        </div>
+       
+    </section>
+
+    <section>
+        <h1>Bottom content</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem ratione consequatur nostrum sint porro fuga quia perferendis libero aliquam mollitia a commodi sequi facere quasi, repellat vero animi iusto quam?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum magnam nisi beatae earum facilis, eius eos totam. Delectus reiciendis voluptatibus neque repellat veniam nulla, alias illo, illum, distinctio expedita magni.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil corrupti animi aut eaque quasi consectetur, odio fugit laborum voluptatem quam temporibus, saepe nobis, commodi ab ratione esse vero doloremque a?</p>
+    </section>
+
+    <section>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem ratione consequatur nostrum sint porro fuga quia perferendis libero aliquam mollitia a commodi sequi facere quasi, repellat vero animi iusto quam?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum magnam nisi beatae earum facilis, eius eos totam. Delectus reiciendis voluptatibus neque repellat veniam nulla, alias illo, illum, distinctio expedita magni.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil corrupti animi aut eaque quasi consectetur, odio fugit laborum voluptatem quam temporibus, saepe nobis, commodi ab ratione esse vero doloremque a?</p>
+    </section>
+
+<script src="script.js"></script>
+</div>
 </html>

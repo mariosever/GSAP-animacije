@@ -1,3 +1,4 @@
+
 // Navbar
 
 let prevScrollpos = window.pageYOffset;
@@ -18,14 +19,11 @@ window.onscroll = function() {
 
 // Hambi
 
+const body = document.querySelector("body");
+
 const hambi = document.querySelector('#hambi');
 
-hambi.onclick = function() {
-    this.classList.toggle('open');
-    document.getElementById("mobileNav").classList.toggle('mobile-open');
-}
-
-var t1 = new TimelineMax({ paused: true });
+let t1 = new TimelineMax({ paused: true });
 
 t1.to(".nav-container", 1, {
     left: 0,
@@ -44,7 +42,7 @@ t1.staggerFrom(
 
 t1.staggerFrom(
     ".socials > span",
-    0.8,
+    0,
     { y: 100, opacity: 0, ease: Expo.easeOut },
     "0.069",
     "-=0.6"
@@ -53,8 +51,10 @@ t1.staggerFrom(
 t1.reverse();
 
 
-hambi.addEventListener("click", function() {
+hambi.addEventListener('click', function() {
     t1.reversed(!t1.reversed());
+    body.classList.toggle('disabledScroll');
+    this.classList.toggle('open');
 });
 
 
@@ -72,3 +72,4 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
