@@ -32,7 +32,44 @@ ScrollTrigger.scrollerProxy(".smooth-scroll", {
 });
 
 
-// OVDJE DODATI KOD ZA HORIZONTALNO SCROLLANJE SLIKA
+const sections = gsap.utils.toArray('section');
+
+sections.forEach( function(section) {
+
+  const inner = section.querySelector('.section-inner');
+
+  if (section.classList.contains('horizontalScrolling')) {
+
+    const scroll = section.querySelector('.data-scroll-in-section');
+
+    // the tween and the pinning have two different ScrollTriggers, because the will need different durations for that overlaying-effect to show
+    
+    ScrollTrigger.create({
+
+      scroller: '.smooth-scroll',
+      trigger: section,
+      start: 'center center',
+      end: () => `+=${section.scrollWidth + window.innerHeight}`, // added an extra window.innerHeight to the end here in comparison to the tween
+      pin: inner,
+      pinSpacing: true,
+      pinType: 'transform',
+      anticipatePin: 1,
+      
+    })
+    
+    gsap.to(scroll, {
+      x: () => `${-(section.scrollWidth - document.documentElement.clientWidth)}px`,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: scroll,
+        scroller: '.smooth-scroll',
+        start: 'center center',
+        end: () => `+=${section.scrollWidth}`,
+        scrub: true,
+      }
+    });
+  } 
+});
 
 
 ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
