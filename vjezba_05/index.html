@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Barba.js Tutorial for Beginners</title>
+		<style type="text/css">
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+			* {
+				text-shadow: none;
+			}
+			body {
+				margin: 0;
+			}
+			nav {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				padding-left: 20px;
+				padding-right: 20px;
+				z-index: 100;
+			}
+			nav > ul {
+				display: flex;
+				flex-wrap: wrap;
+				list-style: none;
+				padding-left: 0;
+				margin-left: -10px;
+				margin-right: -10px;
+			}
+			nav > ul > li {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			nav > ul > li > a {
+				transition: opacity 0.25s ease;
+			}
+			nav > ul > li > a:hover {
+				opacity: 0.75;
+			}
+			nav > ul > li.current-menu-item > a {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+			main {
+				position: relative;
+				display: flex;
+				align-items: center;
+				min-height: 100vh;
+				padding-top: 20px;
+				padding-bottom: 70px;
+			}
+			main > .container {
+				position: relative;
+				flex: 0 0 auto;
+				width: 100%;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+			main[data-barba-namespace="home"] {
+				background-color: lightblue;
+			}
+			main[data-barba-namespace="page"] {
+				background-color: lightgreen;
+			}
+		</style>
+	</head>
+	<body data-barba="wrapper">
+		<nav>
+			<ul>
+				<li class="current-menu-item"><a href="index.html">Home</a></li>
+				<li><a href="page.html">Page</a></li>
+			</ul>
+		</nav>
+		<main data-barba="container" data-barba-namespace="home">
+			<div class="container">
+				<p>This is homepage.</p>
+			</div>
+		</main>
+
+		<script type="text/javascript" src="js/gsap.min.js" id="gsap-js"></script>
+		<script type="text/javascript" src="js/barba.min.js" id="barba-js"></script>
+
+		<script type="text/javascript">
+			(function() {
+				'use strict';
+
+				if ('scrollRestoration' in history) {
+					history.scrollRestoration = 'manual';
+				}
+
+				const onWindowLoad = function() {
+					barba.init({
+						debug: true,
+						transitions: [{
+							name: 'opacity-transition',
+							leave(data) {
+								data.current.container.style.position = 'absolute';
+								data.current.container.style.top = 0;
+								data.current.container.style.left = 0;
+								data.current.container.style.width = '100%';
+
+								updateMenu();
+
+								return gsap.to(data.current.container, {
+									opacity: 0
+								});
+							},
+							enter(data) {
+								return gsap.from(data.next.container, {
+									opacity: 0
+								});
+							}
+						}]
+					});
+				}
+
+				function updateMenu() {
+					const activeLink = document.querySelector('nav li.current-menu-item'),
+						currentLink = document.querySelector('nav li:not(.current-menu-item)');
+					if (activeLink) activeLink.classList.remove('current-menu-item');
+					if (currentLink) currentLink.classList.add('current-menu-item');
+				}
+
+				window.addEventListener('load', onWindowLoad);
+			})();
+		</script>
+	</body>
+</html>
